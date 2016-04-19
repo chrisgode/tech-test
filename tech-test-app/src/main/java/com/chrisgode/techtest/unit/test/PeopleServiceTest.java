@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.chrisgode.techtest.dao.PeopleDAO;
 import com.chrisgode.techtest.domain.People;
 import com.chrisgode.techtest.service.PeopleService;
 import com.chrisgode.techtest.service.PeopleServiceImpl;
@@ -28,7 +29,10 @@ public class PeopleServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		peopleService = new PeopleServiceImpl();
+		PeopleDAO peopleDAO = mock(PeopleDAO.class);
+		People fakePeople = mock(People.class);
+		when(peopleDAO.savePeople(any(People.class))).thenReturn(fakePeople);
+		peopleService = new PeopleServiceImpl(peopleDAO);
 	}
 
 	@After
