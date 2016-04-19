@@ -45,4 +45,17 @@ public class PeopleDAOTest {
 		assertTrue(peopleDAO.savePeople(people));
 	}
 
+	@Test
+	public void testRetrievePeople() {
+		
+		People onePeople = new People();
+		onePeople.setFirstname("Christian");
+		onePeople.setSurname("Godefroy");
+		List<People> people = new ArrayList<People>();
+		people.add(onePeople);
+		assertTrue(peopleDAO.savePeople(people));
+		
+		List<People> retrievedPeople = peopleDAO.retrieveAllPeople();
+		assertTrue(retrievedPeople.get(0).getFirstname().equals("Christian"));
+	}
 }
