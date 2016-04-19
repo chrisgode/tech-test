@@ -3,12 +3,14 @@ package com.chrisgode.techtest.unit.test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.chrisgode.techtest.dao.PeopleDAO;
 import com.chrisgode.techtest.domain.People;
@@ -30,8 +32,7 @@ public class PeopleServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		PeopleDAO peopleDAO = mock(PeopleDAO.class);
-		People fakePeople = mock(People.class);
-		when(peopleDAO.savePeople(any(People.class))).thenReturn(fakePeople);
+		when(peopleDAO.savePeople(any())).thenReturn(true);
 		peopleService = new PeopleServiceImpl(peopleDAO);
 	}
 
@@ -47,9 +48,8 @@ public class PeopleServiceTest {
 	@Test
 	public void testSavePeople() {
 		
-		People fakePeople = mock(People.class);
-		People returnedPeople = peopleService.savePeople(fakePeople);
-		assertNotNull(returnedPeople);
+		List<People> fakePeople = new ArrayList<People>();
+		assertTrue(peopleService.savePeople(fakePeople));
 	}
 
 }

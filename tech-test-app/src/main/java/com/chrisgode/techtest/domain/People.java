@@ -1,7 +1,10 @@
 package com.chrisgode.techtest.domain;
 
-public class People {
+import java.io.Serializable;
 
+public class People implements Serializable{
+
+	private static final long serialVersionUID = 3372856998062979579L;
 	private long id;
 	private String firstname;
     private String surname;

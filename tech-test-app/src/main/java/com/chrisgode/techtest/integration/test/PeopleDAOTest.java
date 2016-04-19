@@ -2,13 +2,16 @@ package com.chrisgode.techtest.integration.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.chrisgode.techtest.dao.FilePeopleDAO;
+import com.chrisgode.techtest.dao.OnFilePeopleDAO;
 import com.chrisgode.techtest.dao.PeopleDAO;
 import com.chrisgode.techtest.domain.People;
 
@@ -26,7 +29,7 @@ public class PeopleDAOTest {
 
 	@Before
 	public void setUp() throws Exception {
-		peopleDAO = new FilePeopleDAO();
+		peopleDAO = new OnFilePeopleDAO();
 	}
 
 	@After
@@ -36,9 +39,10 @@ public class PeopleDAOTest {
 	@Test
 	public void testSavePeople() {
 		
-		People people = new People();
-		people = peopleDAO.savePeople(people);
-		assertNotNull(people);
+		People onePeople = new People();
+		List<People> people = new ArrayList<People>();
+		people.add(onePeople);
+		assertTrue(peopleDAO.savePeople(people));
 	}
 
 }

@@ -20,7 +20,7 @@ public class PeopleServiceImpl implements PeopleService{
 	}
 	
 	@Override
-	public People savePeople(People people) {
+	public boolean savePeople(List<People> people) {
 		return peopleDAO.savePeople(people);
 	}
 
