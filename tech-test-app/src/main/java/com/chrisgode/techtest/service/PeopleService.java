@@ -9,7 +9,7 @@ import com.chrisgode.techtest.domain.People;
 @Component
 public interface PeopleService {
 	
-	public void savePeople(People people);
+	public People savePeople(People people);
 	public People getByFirstLastName(String firstName, String surname);
 	public List<People> retrieveAllPeople();
 }

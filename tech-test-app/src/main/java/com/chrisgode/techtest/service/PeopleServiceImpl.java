@@ -10,8 +10,9 @@ import com.chrisgode.techtest.domain.People;
 public class PeopleServiceImpl implements PeopleService{
 
 	@Override
-	public void savePeople(People people) {
+	public People savePeople(People people) {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
