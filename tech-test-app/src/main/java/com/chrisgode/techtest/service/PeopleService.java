@@ -10,5 +10,6 @@ import com.chrisgode.techtest.domain.People;
 public interface PeopleService {
 	
 	public void savePeople(People people);
+	public People getByFirstLastName(String firstName, String surname);
 	public List<People> retrieveAllPeople();
 }

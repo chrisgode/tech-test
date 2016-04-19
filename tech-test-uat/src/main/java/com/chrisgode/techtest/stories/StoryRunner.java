@@ -19,7 +19,7 @@ public class StoryRunner extends AbstractSpringJBehaveConfig {
         String codeLocation = CodeLocations.codeLocationFromClass(this.getClass()).getFile();
         
         return new StoryFinder().findPaths(codeLocation, 
-        		Arrays.asList("**/story1.story"),
+        		Arrays.asList("**/LoadAndSaveData.story"),
         		Arrays.asList(""), null);
 	}
 }
