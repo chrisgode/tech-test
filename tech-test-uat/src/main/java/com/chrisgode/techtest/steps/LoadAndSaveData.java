@@ -4,6 +4,9 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import static org.junit.Assert.*;
+
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,12 +46,21 @@ public class LoadAndSaveData {
 	public void iClickOnTheSubmitButton(){
 		WebElement submitButton = driver.findElement(By.id("submit-button"));
 		submitButton.click();
+		driver.quit();
 	}
 	
 	@Then("I expect that $firstName $lastName is saved on the server file")
 	public void iExpectThatTheFormDataIsSavedOnAServerFile(String firstName, String surname){
-		People people = peopleService.getByFirstLastName(firstName, surname);
-		assertNotNull(people);
-		driver.quit();
+		
+		List<People> peopleList = peopleService.retrieveAllPeople();
+		
+		boolean isPresent = false;
+		for(People people: peopleList){
+			if(people.getFirstname().equals(firstName) && people.getSurname().equals(surname)){
+				isPresent=true;
+			}
+		}
+		
+		assertTrue(isPresent);
 	}
 }

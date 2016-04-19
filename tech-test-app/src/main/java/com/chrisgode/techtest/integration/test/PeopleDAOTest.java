@@ -29,7 +29,7 @@ public class PeopleDAOTest {
 
 	@Before
 	public void setUp() throws Exception {
-		peopleDAO = new OnFilePeopleDAO();
+		peopleDAO = new OnFilePeopleDAO("/home/desenvolvedor/people.txt");
 	}
 
 	@After

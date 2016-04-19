@@ -25,12 +25,6 @@ public class PeopleServiceImpl implements PeopleService{
 	}
 
 	@Override
-	public People getByFirstLastName(String firstName, String surname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<People> retrieveAllPeople() {
 		return peopleDAO.retrieveAllPeople();
 	}

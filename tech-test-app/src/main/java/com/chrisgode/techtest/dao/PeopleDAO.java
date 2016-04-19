@@ -11,5 +11,4 @@ public interface PeopleDAO {
 
 	public boolean savePeople(List<People> people);
 	public List<People> retrieveAllPeople();
-	public People getByFirstLastName(String firstName, String surname);
 }
