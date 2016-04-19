@@ -32,8 +32,7 @@ public class PeopleServiceImpl implements PeopleService{
 
 	@Override
 	public List<People> retrieveAllPeople() {
-		// TODO Auto-generated method stub
-		return null;
+		return peopleDAO.retrieveAllPeople();
 	}
 
 }
