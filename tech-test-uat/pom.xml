@@ -21,8 +21,7 @@
                     <testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
                     <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
                     <includes>
-                        <include>com/chrisgode/techtest/stories/**/*.java</include>
-                        <include>**/Test*.java</include>
+                        <include>com/chrisgode/techtest/**/*.java</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -31,7 +30,33 @@
                 <groupId>org.jbehave</groupId>
                 <artifactId>jbehave-maven-plugin</artifactId>
                 <version>${jbehave.version}</version>
-            </plugin>
+			    <executions>
+			        <execution>
+			            <id>run-stories-as-embeddables</id>
+			            <phase>uat-test</phase>
+			            <configuration>
+			                <includes>
+			                    <include>**/*.story</include>
+			                </includes>
+			                <metaFilters>
+			                    <metaFilter>+author *</metaFilter>
+			                    <metaFilter>-skip</metaFilter>
+			                </metaFilters>
+			                <systemProperties>
+			                    <property>
+			                      <name>java.awt.headless</name>
+			                      <value>true</value>
+			                    </property>
+			                </systemProperties>
+			                <ignoreFailureInStories>true</ignoreFailureInStories>
+			                <ignoreFailureInView>false</ignoreFailureInView>
+			            </configuration>
+			            <goals>
+			                <goal>run-stories-as-embeddables</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+                </plugin>
         </plugins>
     </build>
 
@@ -45,7 +70,7 @@
 	        <artifactId>htmlunit-driver</artifactId>
 	    </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.chrisgode</groupId>
             <artifactId>tech-test-app</artifactId>
             <version>${project.version}</version>
             <classifier>classes</classifier>

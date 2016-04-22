@@ -1,4 +1,4 @@
-package com.chrisgode.techtest.integration.test;
+package com.chrisgode.techtest.integration;
 
 import static org.junit.Assert.*;
 

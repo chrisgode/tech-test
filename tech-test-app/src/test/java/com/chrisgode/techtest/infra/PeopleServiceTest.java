@@ -1,4 +1,4 @@
-package com.chrisgode.techtest.unit.test;
+package com.chrisgode.techtest.infra;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
